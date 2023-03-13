@@ -1,16 +1,8 @@
 // <ОСНОВНОЙ БЛОК>
 
 .main {
-  grid-area: main;
-  position: relative;
 
-  display: grid;
-  grid-template: 1fr / minmax(15px, 1fr) minmax(10px, 1252px) minmax(15px, 1fr);
-  
-  @media (max-width: 867px) {
-  }
+  grid-area: 2/2;
+  overflow: hidden;
 
-  &__wrapper {
-    grid-area: 1/2;
-  }
 }

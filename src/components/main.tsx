@@ -1,13 +1,9 @@
-import React from 'react';
-import ParallaxPage from '../pages/ParallaxPage';
+import WidgetPage from '../pages/WidgetPage';
 
 function Main() {
   return (
     <main className='main'>
-      {/* wrapper ограничивает весь контент слева и справа */}
-      <div className="main__wrapper">
-        <ParallaxPage  />
-      </div>
+        <WidgetPage  />
     </main>
   );
 }
