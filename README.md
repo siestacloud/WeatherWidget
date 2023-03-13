@@ -46,6 +46,12 @@ npm i
 npm run build
 npm run start
 ```
+Перед запуском или сборкой проекта в корне необходимо создать файл ./src/.env.local, и заполнить его следующим образом:
+
+```
+REACT_APP_API_KEY=<Ваш API-ключ от openweathermap>
+```
+
 ---
 
 
