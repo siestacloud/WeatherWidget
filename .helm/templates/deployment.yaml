@@ -31,10 +31,12 @@ spec:
         ports: 
           - name: app
             containerPort: 8080
-            protocol: TCP
+            protocol: TCP 
         env:
         - name: APP
           value: {{ .Values.werf.name }}
+        - name: REACT_APP_API_KEY
+          value: {{ .Values.key }}
       - name: exporter
         image: nginx/nginx-prometheus-exporter:0.10.0
         resources:
