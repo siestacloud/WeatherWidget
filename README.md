@@ -6,9 +6,9 @@
  <img width=100% height=700px src="./src/assets/img/preview.png" alt="Project logo"></a>
 </p>
 
-<h3 align="center">Weather widget</h3>
 
 <div align="center">
+<h3 align="center">Weather widget</h3>
 
 [![Status](https://img.shields.io/badge/status-active-success.svg)]()
 [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/pulls)
