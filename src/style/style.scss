@@ -11,60 +11,60 @@
 $fontfamily: "Circe", sans-serif;
 // </Шрифт по умолчанию>
 
-// </ШРИФТЫ>
 
 // <ПЕРЕМЕННЫЕ>
 $light: rgb(254, 255, 249);
 $dark: #090a1a;
 
-// </ПЕРЕМЕННЫЕ>
+$fontColor: rgb(20, 19, 19);
+$fontColorInactive: rgba(136, 131, 131, 0.788);
 
+$backLight: #fff;
+$backGrey: rgb(236, 236, 236);
+$bg: rgb(185, 180, 180);
 // <ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>
 @import "_null";
-// </ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>
 
 * {
   scroll-behavior: smooth;
 }
-.root {
-  // overflow: hidden;
+.root{
 
   height: 100%;
+
 }
 // <ОБОЛОЧКА>
 .wrapper {
-  background-color: $dark;
-  color: $light;
-
-  // overflow: hidden;
+  background-color: $bg;
+  color: $fontColor;
+  overflow: hidden;
   min-height: 100%;
+
   display: grid;
-  grid-template: minmax(70px, auto) 1fr minmax(70px, auto) / minmax(80px, auto);
-  grid-template-areas:
-    "header"
-    "main"
-    "footer";
+
+  grid-template: minmax(70px, auto) 1fr minmax(70px, auto)  / minmax(30px, 1fr) minmax(10px, 1452px) minmax(30px, 1fr);
 }
 
-// </ОБОЛОЧКА>
 
 // <ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>
 @import "_mixin";
 
 // подключаю стили для секции с основным контентом
-
 // подключаю стили для компонентов
-
-
-
-
 @import "_scrollbar";
-
-// базовая расстановка контента на странице
-@import "_header";
-@import "_main";
-@import "_footer";
-
 @import "_mod";
 
-// </ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>
+
+// базовая расстановка контента на странице
+//* @import "_header";
+@import "_main";
+//* @import "_footer";
+
+@import "./components/widget/_widget";
+@import "./components/widget/_widgetBar";
+@import "./components/widget/_widgetContent";
+@import "./components/card/_card";
+@import "./components/navbar/_navbar";
+@import "./components/weekbar/_weekbar";
+@import "./components/asidebar/_asidebar";
+@import "./components/search/_search";

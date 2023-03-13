@@ -4,13 +4,14 @@ stages:
   - deploy-prod
   - cleanup
 image: "registry.werf.io/werf/werf:latest"
+
 Build and Publish:
   stage: build
   script:
     - type werf && source $(werf ci-env gitlab --as-file)
     - werf build
   only: [merge_requests]
-  # tags: [werf-kubernetes]
+  tags: [kubernetes-runner-for-werf]
 
 variables:
   KUBERNETES_POD_ANNOTATIONS_1: "container.apparmor.security.beta.kubernetes.io/build=unconfined"
@@ -21,7 +22,7 @@ variables:
   script:
     - type werf && source $(werf ci-env gitlab --as-file)
     - cat .helm/values-${CI_ENVIRONMENT_NAME}-encrypted.yaml | werf helm secret decrypt -o .helm/values-${CI_ENVIRONMENT_NAME}-decrypted.yaml
-    - werf converge --namespace="vpervieruki-${CI_ENVIRONMENT_NAME}" --skip-build --set "global.env_url=$(echo ${CI_ENVIRONMENT_URL} | cut -d / -f 3)" --values=".helm/values-${CI_ENVIRONMENT_NAME}-decrypted.yaml"
+    - werf converge --namespace="infra-${CI_ENVIRONMENT_NAME}" --skip-build --set "global.env_url=$(echo ${CI_ENVIRONMENT_URL} | cut -d / -f 3)" --values=".helm/values-${CI_ENVIRONMENT_NAME}-decrypted.yaml"
     - rm -rf .helm/values-${CI_ENVIRONMENT_NAME}-decrypted.yaml
   dependencies:
     - Build and Publish
@@ -34,7 +35,7 @@ Deploy to Dev:
   environment:
     name: dev
     url: https://firsthand.duduh.ru
-  tags: [werf-kubernetes-nas]
+  tags: [kubernetes-runner-for-werf]
   needs: [Build and Publish]
 
 Deploy to Prod:
@@ -44,7 +45,7 @@ Deploy to Prod:
     name: prod
     url: https://впервыеруки.рф
   needs: [Build and Publish, Deploy to Dev]
-  tags: [werf-kubernetes-nas]
+  tags: [kubernetes-runner-for-werf]
   when: manual
 
 # Deploy to Dev v2:
