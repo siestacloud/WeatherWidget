@@ -4,13 +4,14 @@ stages:
   - deploy-prod
   - cleanup
 image: "registry.werf.io/werf/werf:latest"
+
 Build and Publish:
   stage: build
   script:
     - type werf && source $(werf ci-env gitlab --as-file)
     - werf build
   only: [merge_requests]
-  # tags: [werf-kubernetes]
+  tags: [kubernetes-runner-for-werf]
 
 variables:
   KUBERNETES_POD_ANNOTATIONS_1: "container.apparmor.security.beta.kubernetes.io/build=unconfined"
@@ -34,7 +35,7 @@ Deploy to Dev:
   environment:
     name: dev
     url: https://firsthand.duduh.ru
-  tags: [werf-kubernetes-nas]
+  tags: [kubernetes-runner-for-werf]
   needs: [Build and Publish]
 
 Deploy to Prod:
@@ -44,7 +45,7 @@ Deploy to Prod:
     name: prod
     url: https://впервыеруки.рф
   needs: [Build and Publish, Deploy to Dev]
-  tags: [werf-kubernetes-nas]
+  tags: [kubernetes-runner-for-werf]
   when: manual
 
 # Deploy to Dev v2:

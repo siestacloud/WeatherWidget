@@ -37,17 +37,21 @@
 ## 🔧 Getting Started <a name = "getting_started"></a>
 
 Эти инструкции помогут вам создать копию проекта в локальном окружении для разработки и тестирования. 
-Итоговая реализация доступна по ссылке
+Итоговая реализация доступна по ссылке 
 ###  Installing
 ```
-git clone  https://github.com/siestacloud/BookShopTS 
+git clone  https://gitlab.com/infrastructures/panorama/workflow-k8s/client-workflow/weather/-/tree/main
 
 npm i
 npm run build
-npm run start:dev
+npm run start
 ```
 ---
 
+
+
+
+### расшифровка CICD secrets 
 
 
 ```
