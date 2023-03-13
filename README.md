@@ -10,6 +10,7 @@
 <div align="center">
 <h3 align="center">Weather widget</h3>
 
+
 [![Status](https://img.shields.io/badge/status-active-success.svg)]()
 [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/pulls)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
@@ -25,11 +26,14 @@
 
 # Weather widget TS
 
+
 ## Table of Contents
 
+- [Check result](https://weather.siestacloud.ru/)
 - [About](#about)
 - [Getting Started](#getting_started)
-
+## 😉 Check result <a name = "Check result"></a>
+Итоговая реализация проекта доступна по ссылке <https://weather.siestacloud.ru/>
 ## 🧐 About <a name = "about"></a>
 
 Проект выполнен в рамках технического задания модуля React
@@ -37,7 +41,7 @@
 ## 🔧 Getting Started <a name = "getting_started"></a>
 
 Эти инструкции помогут вам создать копию проекта в локальном окружении для разработки и тестирования. 
-Итоговая реализация доступна по ссылке 
+
 ###  Installing
 ```
 git clone  https://gitlab.com/infrastructures/panorama/workflow-k8s/client-workflow/weather/-/tree/main
