@@ -22,7 +22,7 @@ variables:
   script:
     - type werf && source $(werf ci-env gitlab --as-file)
     - cat .helm/values-${CI_ENVIRONMENT_NAME}-encrypted.yaml | werf helm secret decrypt -o .helm/values-${CI_ENVIRONMENT_NAME}-decrypted.yaml
-    - werf converge --namespace="vpervieruki-${CI_ENVIRONMENT_NAME}" --skip-build --set "global.env_url=$(echo ${CI_ENVIRONMENT_URL} | cut -d / -f 3)" --values=".helm/values-${CI_ENVIRONMENT_NAME}-decrypted.yaml"
+    - werf converge --namespace="infra-${CI_ENVIRONMENT_NAME}" --skip-build --set "global.env_url=$(echo ${CI_ENVIRONMENT_URL} | cut -d / -f 3)" --values=".helm/values-${CI_ENVIRONMENT_NAME}-decrypted.yaml"
     - rm -rf .helm/values-${CI_ENVIRONMENT_NAME}-decrypted.yaml
   dependencies:
     - Build and Publish
