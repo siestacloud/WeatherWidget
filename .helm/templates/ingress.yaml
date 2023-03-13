@@ -1,46 +1,30 @@
-{{ if (eq .Values.werf.env "dev") }}
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ .Chart.Name }}
+  annotations: 
+{{ if (eq .Values.werf.env "dev") }}
+    cert-manager.io/cluster-issuer: "letsencrypt-staging"
+{{ end }}
+{{ if (eq .Values.werf.env "prod") }}
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+{{ end }}
 spec:
   ingressClassName: nginx
   rules:
-  - host: {{ .Values.global.ingress.hostname }}
+  - host: {{ .Values.host }}
     http:
       paths:
       - backend:
           service:
             name: {{ .Chart.Name }}
             port:
-              number: 8080
+              number: {{ .Values.port }}
         path: /
-        pathType: Prefix
-      - backend:
-          service:
-            name: backend
-            port:
-              number: 8080
-        path: /api
-        pathType: Prefix
-      - backend:
-          service:
-            name: bot
-            port:
-              number: 8080
-        path: /bot
-        pathType: Prefix
-      - backend:
-          service:
-            name: bot
-            port:
-              number: 9000
-        path: /news
         pathType: Prefix
   tls:
   - hosts:
-    - '{{ .Values.global.ingress.hostname }}'
-    secretName: ingress-{{ .Chart.Name }}
+    - {{ .Values.host }}
+    secretName: {{ .Chart.Name }}-tls
 ---
-{{ end }}
