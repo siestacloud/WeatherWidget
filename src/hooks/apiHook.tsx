@@ -1,6 +1,4 @@
 // import { ILocation } from "./types";
-
-import config from "../models/config";
 import { ILocation } from "../models/stateApp";
 
 /**
@@ -13,7 +11,7 @@ export async function getSearchLocations(userInput: string) {
   url.search = new URLSearchParams({
     limit: "15",
     q: userInput,
-    appid: config.API_KEY,
+    appid: "49b8785c49a510159343b52e91604bde", //config.API_KEY
   }).toString();
   try {
     const response = await fetch(url);
@@ -38,7 +36,7 @@ export async function getCityByPosition(position: GeolocationPosition) {
     limit: "1",
     lat: position.coords.latitude.toString(),
     lon: position.coords.longitude.toString(),
-    appid: config.API_KEY,
+    appid: "49b8785c49a510159343b52e91604bde",
   }).toString();
   try {
     const response = await fetch(url);
@@ -72,7 +70,7 @@ export async function getDailyWeather(location: ILocation, parts: number) {
     units: "metric",
     cnt: parts.toString(),
     lang: "ru",
-    appid: config.API_KEY,
+    appid: "49b8785c49a510159343b52e91604bde",
   }).toString();
 
   const response = await fetch(url);
@@ -109,7 +107,7 @@ export async function getCurrentWeather(location: ILocation) {
     lon: location.lon.toString(),
     units: "metric",
     lang: "ru",
-    appid: config.API_KEY,
+    appid: "49b8785c49a510159343b52e91604bde",
   }).toString();
   const response = await fetch(url);
   if (response.status === 200) {
