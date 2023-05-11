@@ -1,6 +1,0 @@
-configVersion: 1
-project: weather
----
-image: weather
-dockerfile: ./Dockerfile
-context: ./
